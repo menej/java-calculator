@@ -36,6 +36,16 @@ public class Calculator {
         return sb.toString();
     }
 
+    public static String toPostfixNotationString(String evaluationString, String separator) {
+        String[] postfixArray = toPostfixNotationArray(evaluationString);
+        StringBuilder sb = new StringBuilder();
+        for (String s : postfixArray) {
+            sb.append(s).append(separator);
+        }
+        sb.delete(sb.length() - separator.length(), sb.length());
+        return sb.toString();
+    }
+
     private static double postfixEvaluator(Queue<String> evaluationQueue) throws EmptyStackException {
         Stack<Double> stack = new Stack<>();
         while (!evaluationQueue.isEmpty()) {
